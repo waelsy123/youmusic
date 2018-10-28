@@ -8,8 +8,10 @@
     <ul>
         <% for(var i=0; i<list.length; i++) {%>
         <li>
-            
-            <a href="/watch?v=<%= list[i].id %>"><%= list[i].title %></a>
+            <a href="/watch?v=<%= list[i].id %>">
+                <img src="<%= list[i].thumbnails.high.url %>"  height="70" width="70">
+                <%= list[i].title %>
+            </a>
         </li>
         <% } %>
     </ul>
