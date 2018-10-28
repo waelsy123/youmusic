@@ -1,0 +1,18 @@
+<html>
+
+<head>
+    <title>AyeMusic!</title>
+</head>
+
+<body>
+    <ul>
+        <% for(var i=0; i<list.length; i++) {%>
+        <li>
+            
+            <a href="/watch?v=<%= list[i].id %>"><%= list[i].title %></a>
+        </li>
+        <% } %>
+    </ul>
+</body>
+
+</html>
