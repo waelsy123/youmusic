@@ -22,11 +22,11 @@ app.get('/', (req, res) => {
 
 app.get('/search', (req, res) => {
     const { search_query } = req.query;
+    console.log(`searched for: ${search_query}`);
 
     search(search_query, opts, function (err, results) {
         if (err) return console.log(err);
 
-        console.dir(results[0]);
         res.render('results', {
             list: results.filter(item => item.kind === 'youtube#video')
         });
@@ -60,6 +60,7 @@ app.get('/watch', (req, res) => {
             'Content-Length': 99999999
 
         });
+        audio.pipe(res);
 
         audio.once('response', () => {
             starttime = Date.now();
@@ -75,7 +76,6 @@ app.get('/watch', (req, res) => {
             readline.moveCursor(process.stdout, 0, -1);
         });
         audio.on('end', () => {
-            audio.pipe(res);
             process.stdout.write('\n\n');
         });
 
